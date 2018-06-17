@@ -1,8 +1,7 @@
-package com.multithreads.multithreads;
+package com.multithreads.multithreads.TheSynchronizedKeyword;
 
 public class TheSynchronizedKeyword {
     private int count = 0;
-
     public synchronized void increment() {
         count ++;
     }
@@ -30,6 +29,7 @@ public class TheSynchronizedKeyword {
                 }
             }
         });
+
         t1.start();
         t2.start();
 

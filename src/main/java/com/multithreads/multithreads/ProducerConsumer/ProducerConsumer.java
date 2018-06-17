@@ -1,4 +1,4 @@
-package com.multithreads.multithreads;
+package com.multithreads.multithreads.ProducerConsumer;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -36,11 +36,13 @@ public class ProducerConsumer {
         t1.join();
         t2.join();
     }
+
     private static void producer() throws InterruptedException {
         while(true) {
                 queue.put(ThreadLocalRandom.current().nextInt(100));
         }
     }
+
     private static void consumer() throws InterruptedException {
         while(true) {
             Thread.sleep(100);

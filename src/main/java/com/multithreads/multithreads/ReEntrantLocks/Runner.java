@@ -1,13 +1,12 @@
-package com.multithreads.multithreads;
+package com.multithreads.multithreads.ReEntrantLocks;
 
 import java.util.Scanner;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-class Runner1 {
+public class Runner {
     private int count = 0;
-
     private Lock lock = new ReentrantLock();
     private Condition cond = lock.newCondition();
 
@@ -23,6 +22,7 @@ class Runner1 {
         System.out.println("Waiting ...");
         cond.await();
         System.out.println("Woken up!");
+
         try {
             increment();
         }
@@ -50,43 +50,5 @@ class Runner1 {
 
     public void finished() {
         System.out.println("Count is: " + count);
-
-    }
-}
-public class ReEntrantLocks {
-
-    public static void main(String[] args) throws Exception{
-
-        final Runner1 runner = new Runner1();
-
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    runner.firstThread();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    runner.secondThread();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        t1.start();
-        t2.start();
-
-        t1.join();
-        t2.join();
-
-        runner.finished();
     }
 }

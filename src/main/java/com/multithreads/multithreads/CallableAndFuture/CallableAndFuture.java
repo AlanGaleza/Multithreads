@@ -1,9 +1,10 @@
-package com.multithreads.multithreads;
+package com.multithreads.multithreads.CallableAndFuture;
 
 import java.io.IOException;
 import java.util.concurrent.*;
 
 public class CallableAndFuture {
+
     public static void main(String[] args) {
         ExecutorService executor= Executors.newCachedThreadPool();
 
@@ -16,23 +17,18 @@ public class CallableAndFuture {
                 if (duration > 2000) {
                     throw new IOException("Sleeping for too long.");
                 }
-
                 try {
                     Thread.sleep(duration);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 System.out.println("Starting ...");
-
-
                 System.out.println("Finished");
                 return null;
             }
-
         });
 
         executor.shutdown();
-
 
         try {
             System.out.println("Result is: " + future.get());

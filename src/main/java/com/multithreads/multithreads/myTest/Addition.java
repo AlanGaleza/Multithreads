@@ -1,7 +1,5 @@
 package com.multithreads.multithreads.myTest;
 
-import java.util.stream.IntStream;
-
 public class Addition extends Thread {
     @Override
     public void run() {
@@ -14,6 +12,5 @@ public class Addition extends Thread {
         }
 
         System.out.println("Addition has end");
-        //IntStream.range(0, 1000).map(n -> n + n).forEach(System.out::println);
     }
 }

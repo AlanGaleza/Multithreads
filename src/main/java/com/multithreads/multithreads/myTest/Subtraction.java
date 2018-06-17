@@ -1,7 +1,5 @@
 package com.multithreads.multithreads.myTest;
 
-import java.util.stream.IntStream;
-
 public class Subtraction extends Thread {
 
     @Override
@@ -15,6 +13,5 @@ public class Subtraction extends Thread {
         }
 
         System.out.println("Subtraction has end");
-        //IntStream.range(0, 100).forEach(System.out::println);
     }
 }

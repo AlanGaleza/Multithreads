@@ -1,12 +1,10 @@
-package com.multithreads.multithreads;
+package com.multithreads.multithreads.Semaphores;
 
-import java.util.concurrent.*;
+import java.util.concurrent.Semaphore;
 
-class Connection {
+public class Connection {
     private static Connection instance = new Connection();
-
     private Semaphore sem = new Semaphore(10);
-
     private int connections = 0;
 
     private Connection() {}
@@ -49,27 +47,6 @@ class Connection {
 
         synchronized (this) {
             connections--;
-        }
-    }
-}
-
-public class Semaphores {
-    public static void main(String[] args) throws Exception {
-        Connection.getInstance().connect();
-
-        ExecutorService executorService = Executors.newCachedThreadPool();
-
-        for (int i = 0; i < 200; i++) {
-            executorService.submit(new Runnable() {
-                @Override
-                public void run() {
-                    Connection.getInstance().connect();
-                }
-            });
-
-            executorService.shutdown();
-
-            executorService.awaitTermination(1, TimeUnit.DAYS);
         }
     }
 }
